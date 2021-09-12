@@ -23,6 +23,21 @@ const Random = ({ joke }) => {
 // Data depends on each request
 export const getServerSideProps = async () => {
   const joke = await getRandomJoke();
+  // joke = false;
+
+  if (!joke) {
+    return {
+      notFound: true, // 404 page
+    };
+
+    // Redirect
+    // return {
+    //   redirect: {
+    //     destination: "/posts",
+    //     permanent: false,
+    //   },
+    // };
+  }
 
   return {
     props: {

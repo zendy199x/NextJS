@@ -4,6 +4,7 @@ import React from "react";
 import { Button, Card, Spinner } from "react-bootstrap";
 import Layout from "../../components/Layout";
 import { getPostById, getPostIds } from "../../lib/post";
+import spinnerStyles from "../../styles/Spinner.module.css";
 
 const Post = ({ post }) => {
   const router = useRouter();
@@ -12,7 +13,12 @@ const Post = ({ post }) => {
   // And the following temporary page will be rendered, Subsequent times that page will be included in the rerender list
   if (router.isFallback) {
     return (
-      <Spinner animation="border" role="status" variant="dark">
+      <Spinner
+        animation="border"
+        role="status"
+        variant="dark"
+        className={spinnerStyles.spinnerLg}
+      >
         <span className="sr-only"></span>
       </Spinner>
     );
